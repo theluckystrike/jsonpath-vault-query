@@ -2,6 +2,7 @@ import { PluginSettingTab, type SettingDefinitionItem } from 'obsidian';
 import { sponsorsSettingItems } from './license/github-obsidian';
 import { PRO_UI } from './pro';
 import type QueryPlugin from './main';
+import { helloSettingItems } from './hello/settings';
 export interface SavedQuery { name: string; path: string; expression: string }
 export interface QuerySettings { saved: SavedQuery[] }
 export const DEFAULT_SETTINGS: QuerySettings = { saved: [] };
@@ -18,6 +19,11 @@ export function normalizeSettings(value: unknown): QuerySettings {
 export class QuerySettingTab extends PluginSettingTab {
 	constructor(app: ConstructorParameters<typeof PluginSettingTab>[0], private owner: QueryPlugin) { super(app, owner); }
 	getSettingDefinitions(): SettingDefinitionItem[] {
+		// The product rows, then the "More from NoteMods" card (packages/hello).
+		return [...this.productSettingDefinitions(), ...helloSettingItems()];
+	}
+
+	productSettingDefinitions(): SettingDefinitionItem[] {
 		return [...(this.owner.pro ? sponsorsSettingItems(this.owner.pro, PRO_UI) : []),
 		{ name: 'Saved queries', desc: 'Save file and expression pairs in the query view. Up to 100 names are kept in local plugin settings.' }];
 	}

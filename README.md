@@ -69,6 +69,8 @@ For JSONL records at the root, use `[*].name`. A missing field can return null. 
 
 ## Settings
 
+After a minor or major update, this plugin opens one What's new tab in the background. The tab and settings card suggest other NoteMods plugins and Zovo Chat and link to notemods.com for feedback ([privacy](https://notemods.com/privacy/)). The tab sends no data. Turn the tab off in Settings.
+
 The query view holds the input path, expression, named queries, chosen batch paths, and report action. Saved pairs use Plugin.saveData. The account controls are in the plugin settings tab. They show the sponsorship state and provide Sign in with GitHub, Refresh, and Sign out.
 
 Input is limited to 5 MiB per file. Tables display at most 500 rows and 50 columns. The view shows the total row count and a truncation message when rows are omitted. Table cells display at most 2,000 characters. Other output displays at most 100,000 characters. These display limits do not shorten Copy JSON or report content. The expression limit is 10,000 characters. These limits are fixed in this version.

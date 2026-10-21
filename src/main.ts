@@ -5,11 +5,15 @@ import { bindPro, isPro, resetPro, SPONSORS } from './pro';
 import { MAX_BYTES, combineResults, report, runQuery, validateExpression } from './query';
 import { normalizeSettings, QuerySettingTab, type QuerySettings, type SavedQuery } from './settings';
 import { QueryView, VIEW_ID } from './view';
+import { setupHello } from './hello/index';
+import WHATS_NEW from './whats-new.json';
 export default class QueryPlugin extends Plugin {
 	settings: QuerySettings = { saved: [] };
 	pro: SponsorsManager | null = null;
 	readonly views = new Set<QueryView>();
 	async onload(): Promise<void> {
+		// First: "What's new" reads its state before the settings load (packages/hello). It does not wait.
+		setupHello(this, WHATS_NEW);
 		this.settings = normalizeSettings(await this.loadData());
 		const pro = createGitHubSponsors(this.app, this.manifest.id, SPONSORS, this);
 		pro.init(); this.pro = pro; bindPro(pro);

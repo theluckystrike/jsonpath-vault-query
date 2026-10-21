@@ -1,6 +1,6 @@
 {
 	"name": "jsonpath-vault-query",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"private": true,
 	"description": "Run local JSON queries on vault files and show the results as tables or text.",
 	"main": "main.js",
