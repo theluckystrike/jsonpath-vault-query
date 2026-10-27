@@ -1,7 +1,7 @@
 {
 	"id": "jsonpath-vault-query",
 	"name": "Local JSON Queries",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"minAppVersion": "1.13.4",
 	"description": "Run local JSON queries on vault files and show the results as tables or text.",
 	"author": "Michael Lip",

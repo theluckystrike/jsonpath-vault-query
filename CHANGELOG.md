@@ -1,5 +1,11 @@
 # jsonpath-vault-query
 
+## 1.1.1
+
+### Patch Changes
+
+- ad77490: Run saved query on files and Write report now show how to get Pro, with a Sponsor on GitHub button, when you select them without Pro. No file is read or written, and the shown result stays.
+
 ## 1.1.0
 
 ### Minor Changes

@@ -1,6 +1,7 @@
 import { ItemView, Modal, Notice, Setting, type WorkspaceLeaf } from 'obsidian';
 import type QueryPlugin from './main';
 import { cellText, errorText, MAX_ROWS, MAX_TEXT, tableResult } from './query';
+import { BATCH_LEAD, isPro, proNotice, REPORT_LEAD } from './pro';
 const QUERY_LANGUAGE = 'JMESPath';
 const PRO_LABEL = 'Pro';
 export const VIEW_ID = 'jsonpath-vault-query-view';
@@ -31,8 +32,13 @@ export class QueryView extends ItemView {
 		new Setting(el).setName('Query name').addText((t) => t.setValue(this.savedName).onChange((v) => { this.savedName = v; })).addButton((b) => b.setButtonText('Save query').onClick(async () => {
 			try { await this.owner.saveQuery({ name: this.savedName.trim(), path: this.path.trim(), expression: this.expression }); this.savedName = this.savedName.trim(); this.draw(); new Notice('Query saved.'); } catch (e) { this.showError(e); }
 		}));
-		new Setting(el).setName(`Several files (${PRO_LABEL})`).setDesc('Select a saved query first. Enter 1 to 20 paths, one per line. Results combine in file order; arrays flatten one level.').addTextArea((t) => t.setValue(this.batchPaths).onChange((v) => { this.batchPaths = v; this.clearResult(); })).addButton((b) => b.setButtonText('Run saved query on files').onClick(() => this.run(true)));
+		new Setting(el).setName(`Several files (${PRO_LABEL})`).setDesc('Select a saved query first. Enter 1 to 20 paths, one per line. Results combine in file order; arrays flatten one level.').addTextArea((t) => t.setValue(this.batchPaths).onChange((v) => { this.batchPaths = v; this.clearResult(); })).addButton((b) => b.setButtonText('Run saved query on files').onClick(() => {
+			// A free user gets the Pro notice. No file is read and the shown result stays.
+			if (!isPro()) { proNotice(BATCH_LEAD); return; }
+			void this.run(true);
+		}));
 		new Setting(el).setName(`New report (${PRO_LABEL})`).setDesc('Write the complete result to a new file at the vault root.').addButton((b) => b.setButtonText('Write report').onClick(() => {
+			if (!isPro()) { proNotice(REPORT_LEAD); return; }
 			if (this.result === undefined) { this.showError(new Error('Run a query before you write a report.')); return; }
 			new ReportModal(this).open();
 		}));

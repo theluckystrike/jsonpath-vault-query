@@ -1,9 +1,9 @@
 {
 	"id": "jsonpath-vault-query",
 	"name": "Local JSON Queries",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"changes": [
-		"New Send feedback command. It opens a page where you can report a problem or suggest an idea."
+		"Run saved query on files and Write report now show how to get Pro, with a Sponsor on GitHub button, when you select them without Pro. No file is read or written, and the shown result stays."
 	],
 	"tip": "Select Copy JSON to copy the complete result, including rows the table display omits.",
 	"thanks": "Hi, I am Michael, a solo developer in Poland. Local JSON Queries is one of over 100 small plugins that I make. Thank you for querying your JSON files with it.",

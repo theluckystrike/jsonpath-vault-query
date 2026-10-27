@@ -32,13 +32,13 @@ Enter a Query name and select Save query to keep the current file path and expre
 
 ### Several chosen files (Pro)
 
-Select a saved query. Enter the chosen file paths under Several files, with one path per line. Select Run saved query on files. The saved expression runs on each file in sequence. Array results combine by one level; scalar and object results each add one item. Repeated paths run once. The limit is 20 chosen paths. If a file fails, the combined result is cleared. This action does not create a file.
+Select a saved query. Enter the chosen file paths under Several files, with one path per line. Select Run saved query on files. The saved expression runs on each file in sequence. Array results combine by one level; scalar and object results each add one item. Repeated paths run once. The limit is 20 chosen paths. If a file fails, the combined result is cleared. This action does not create a file. Without Pro, the button shows a Sponsor on GitHub notice and reads no file.
 
 <img src="https://raw.githubusercontent.com/theluckystrike/jsonpath-vault-query/HEAD/docs/batch.png" alt="One saved query combines people from two chosen files" width="720">
 
 ### New report files (Pro)
 
-After a successful query, select Write report. Enter a name and choose Create CSV or Create Markdown. The plugin writes the complete result at the vault root. An existing file stops the write and keeps its contents. A scalar or a plain array uses a result column. CSV quotes fields and adds an apostrophe to text that can start a spreadsheet formula. Markdown escapes HTML, table separators, square brackets, number signs, and percent signs, so a report adds no tags or comments.
+After a successful query, select Write report. Enter a name and choose Create CSV or Create Markdown. The plugin writes the complete result at the vault root. An existing file stops the write and keeps its contents. A scalar or a plain array uses a result column. CSV quotes fields and adds an apostrophe to text that can start a spreadsheet formula. Markdown escapes HTML, table separators, square brackets, number signs, and percent signs, so a report adds no tags or comments. Without Pro, Write report shows the same notice and writes nothing.
 
 <img src="https://raw.githubusercontent.com/theluckystrike/jsonpath-vault-query/HEAD/docs/report.png" alt="The report dialog shows the file name and CSV or Markdown actions" width="720">
 

@@ -1,7 +1,7 @@
 import { Plugin, normalizePath, type TFile } from 'obsidian';
 import type { SponsorsManager } from './license/index';
 import { createGitHubSponsors } from './license/github-obsidian';
-import { bindPro, isPro, resetPro, SPONSORS } from './pro';
+import { bindPro, isPro, resetPro, SPONSORS, proText } from './pro';
 import { MAX_BYTES, combineResults, report, runQuery, validateExpression } from './query';
 import { normalizeSettings, QuerySettingTab, type QuerySettings, type SavedQuery } from './settings';
 import { QueryView, VIEW_ID } from './view';
@@ -56,14 +56,14 @@ export default class QueryPlugin extends Plugin {
 		return runQuery(await this.app.vault.read(file), file.path, expression);
 	}
 	async queryFiles(paths: string[], expression: string): Promise<unknown[]> {
-		if (!isPro()) throw new Error('Several files need Pro. Sponsor on GitHub, then sign in from the plugin settings.');
+		if (!isPro()) throw new Error(proText('Several files need Pro.'));
 		if (!paths.length || paths.length > 20) throw new Error('Choose 1 to 20 files.');
 		const values: unknown[] = [];
 		for (const path of [...new Set(paths)]) { if (!isPro()) throw new Error('Pro is off.'); values.push(await this.queryFile(path, expression)); }
 		return combineResults(values);
 	}
 	async writeReport(value: unknown, kind: 'csv' | 'md', title: string): Promise<TFile> {
-		if (!isPro()) throw new Error('Reports need Pro. Sponsor on GitHub, then sign in from the plugin settings.');
+		if (!isPro()) throw new Error(proText('Reports need Pro.'));
 		if (!title.trim() || /[\\/:*?"<>|#^[\]]/.test(title) || title === '.' || title === '..') throw new Error('Enter a report name without path characters.');
 		const path = normalizePath(`${title.trim()}.${kind}`);
 		if (this.app.vault.getAbstractFileByPath(path)) throw new Error('The report file exists. Choose a new name.');

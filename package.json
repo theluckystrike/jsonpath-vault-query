@@ -1,7 +1,6 @@
 {
 	"name": "jsonpath-vault-query",
-	"repository": {"type": "git", "url": "theluckystrike/jsonpath-vault-query.git"},
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"private": true,
 	"description": "Run local JSON queries on vault files and show the results as tables or text.",
 	"main": "main.js",
