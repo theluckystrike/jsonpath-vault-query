@@ -8,7 +8,7 @@ import manifest from '../manifest.json';
 
 // A free user who selects "Run saved query on files" or "Write report" gets the shared Pro notice with the
 // "Sponsor on GitHub" button. No file is read or written, and the shown result stays.
-const PITCH = 'Sponsor on GitHub, then sign in from the plugin settings.';
+const PITCH = 'One payment turns on Pro in every NoteMods plugin. Sponsor on GitHub, then sign in from the plugin settings.';
 const BATCH = 'A saved query on several files needs Pro.';
 const REPORT = 'New report files need Pro.';
 
